@@ -1,0 +1,69 @@
+@page
+@model FullCRUDZoo.Pages.Animals.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Animal</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Animal.Name" class="control-label"></label>
+                <input asp-for="Animal.Name" class="form-control" />
+                <span asp-validation-for="Animal.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.Species" class="control-label"></label>
+                <input asp-for="Animal.Species" class="form-control" />
+                <span asp-validation-for="Animal.Species" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.Age" class="control-label"></label>
+                <input asp-for="Animal.Age" class="form-control" />
+                <span asp-validation-for="Animal.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.Diet" class="control-label"></label>
+                <input asp-for="Animal.Diet" class="form-control" />
+                <span asp-validation-for="Animal.Diet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.Photo" class="control-label"></label>
+                <input asp-for="Animal.Photo" class="form-control" />
+                <span asp-validation-for="Animal.Photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.DateOfBirth" class="control-label"></label>
+                <input asp-for="Animal.DateOfBirth" class="form-control" />
+                <span asp-validation-for="Animal.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.DateAquired" class="control-label"></label>
+                <input asp-for="Animal.DateAquired" class="form-control" />
+                <span asp-validation-for="Animal.DateAquired" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Animal.LastFed" class="control-label"></label>
+                <input asp-for="Animal.LastFed" class="form-control" />
+                <span asp-validation-for="Animal.LastFed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
