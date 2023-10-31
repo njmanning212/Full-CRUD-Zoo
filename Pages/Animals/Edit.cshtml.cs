@@ -25,53 +25,47 @@ namespace FullCRUDZoo.Pages.Animals
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Animals == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var animal =  await _context.Animals.FirstOrDefaultAsync(m => m.AnimalID == id);
-            if (animal == null)
+            Animal = await _context.Animals.FindAsync(id);
+
+            if (Animal == null)
             {
                 return NotFound();
             }
-            Animal = animal;
+
             return Page();
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
+            var animalToUpdate = await _context.Animals.FindAsync(id);
+
+            if (animalToUpdate == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Animal).State = EntityState.Modified;
-
-            try
+            if (await TryUpdateModelAsync<Animal>(
+                animalToUpdate,
+                "animal",
+                a => a.Name, a => a.Species, a => a.Diet, a => a.Photo, a => a.DateOfBirth, a => a.DateAquired, a => a.LastFed
+            ))
             {
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AnimalExists(Animal.AnimalID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
+            return Page();
         }
 
         private bool AnimalExists(int id)
         {
-          return (_context.Animals?.Any(e => e.AnimalID == id)).GetValueOrDefault();
+            return (_context.Animals?.Any(e => e.AnimalID == id)).GetValueOrDefault();
         }
     }
 }
