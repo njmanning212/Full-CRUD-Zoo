@@ -19,25 +19,36 @@ namespace FullCRUDZoo.Pages.Animals
             _context = context;
         }
 
-      public Animal Animal { get; set; } = default!; 
+        public Animal Animal { get; set; } = default!;
+        public string Age { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Animals == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var animal = await _context.Animals.FirstOrDefaultAsync(m => m.AnimalID == id);
-            if (animal == null)
+            Animal = await _context.Animals.FindAsync(id);
+
+            if (Animal == null)
             {
                 return NotFound();
             }
-            else 
+
+            DateTime Today = DateTime.Now;
+
+            if (Today.Year - Animal.DateOfBirth.Year == 0)
             {
-                Animal = animal;
+                Age = "< 1 year old";
             }
+            else
+            {
+                Age = (Today.Year - Animal.DateOfBirth.Year).ToString() + " years old";
+            }
+
             return Page();
         }
+
     }
 }

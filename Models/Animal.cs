@@ -7,7 +7,6 @@ public class Animal
   public int AnimalID { get; set; }
   public string Name { get; set; }
   public string Species { get; set; }
-  public int Age {get; set;}
   public string Diet { get; set; }
   public string Photo { get; set; }
   [DisplayName("Date Of Birth")]

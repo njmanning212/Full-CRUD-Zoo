@@ -20,7 +20,8 @@ namespace FullCRUDZoo.Pages.Animals
         }
 
         [BindProperty]
-      public Animal Animal { get; set; } = default!;
+        public Animal Animal { get; set; } = default!;
+        public string? Age { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,16 +30,24 @@ namespace FullCRUDZoo.Pages.Animals
                 return NotFound();
             }
 
-            var animal = await _context.Animals.FirstOrDefaultAsync(m => m.AnimalID == id);
+            Animal = await _context.Animals.FindAsync(id);
 
-            if (animal == null)
+            DateTime Today = DateTime.Now;
+
+            if (Today.Year - Animal.DateOfBirth.Year == 0)
+            {
+                Age = "< 1 years old";
+            }
+            else
+            {
+                Age = (Today.Year - Animal.DateOfBirth.Year).ToString() + " years old";
+            }
+
+            if (Animal == null)
             {
                 return NotFound();
             }
-            else 
-            {
-                Animal = animal;
-            }
+
             return Page();
         }
 
