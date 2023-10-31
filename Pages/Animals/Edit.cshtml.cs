@@ -58,7 +58,7 @@ namespace FullCRUDZoo.Pages.Animals
             ))
             {
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                return RedirectToPage("./Details", new { id = animalToUpdate.AnimalID });
             }
             return Page();
         }

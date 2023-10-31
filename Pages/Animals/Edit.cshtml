@@ -5,61 +5,72 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>@Model.Animal.Name</h1>
 
-<h4>Animal</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Animal.AnimalID" />
-            <div class="form-group">
-                <label asp-for="Animal.Name" class="control-label"></label>
-                <input asp-for="Animal.Name" class="form-control" />
-                <span asp-validation-for="Animal.Name" class="text-danger"></span>
+<section class="d-flex flex-column flex-md-row justify-content-between">
+    <div class="w-100 w-md-50 min-w-300">
+        <h4>Edit Details</h4>
+        <div class="row">
+            <div class="col-md-10">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Animal.AnimalID" />
+                    <div class="form-group">
+                        <label asp-for="Animal.Name" class="control-label mb-1"></label>
+                        <input asp-for="Animal.Name" class="form-control mb-2" />
+                        <span asp-validation-for="Animal.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Animal.Species" class="control-label mb-1"></label>
+                        <input asp-for="Animal.Species" class="form-control mb-2" />
+                        <span asp-validation-for="Animal.Species" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Animal.Diet" class="control-label mb-1"></label>
+                        <input asp-for="Animal.Diet" class="form-control mb-2" />
+                        <span asp-validation-for="Animal.Diet" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Animal.PhotoURL" class="control-label mb-1"></label>
+                        <input asp-for="Animal.PhotoURL" class="form-control mb-2" />
+                        <span asp-validation-for="Animal.PhotoURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Animal.DateOfBirth" class="control-label mb-1"></label>
+                        <input asp-for="Animal.DateOfBirth" class="form-control mb-2" />
+                        <span asp-validation-for="Animal.DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Animal.DateAquired" class="control-label mb-1"></label>
+                        <input asp-for="Animal.DateAquired" class="form-control mb-2" />
+                        <span asp-validation-for="Animal.DateAquired" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Animal.LastFed" class="control-label mb-1"></label>
+                        <input asp-for="Animal.LastFed" class="form-control mb-2" />
+                        <span asp-validation-for="Animal.LastFed" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary my-2" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Animal.Species" class="control-label"></label>
-                <input asp-for="Animal.Species" class="form-control" />
-                <span asp-validation-for="Animal.Species" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Animal.Diet" class="control-label"></label>
-                <input asp-for="Animal.Diet" class="form-control" />
-                <span asp-validation-for="Animal.Diet" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Animal.PhotoURL" class="control-label"></label>
-                <input asp-for="Animal.PhotoURL" class="form-control" />
-                <span asp-validation-for="Animal.PhotoURL" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Animal.DateOfBirth" class="control-label"></label>
-                <input asp-for="Animal.DateOfBirth" class="form-control" />
-                <span asp-validation-for="Animal.DateOfBirth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Animal.DateAquired" class="control-label"></label>
-                <input asp-for="Animal.DateAquired" class="form-control" />
-                <span asp-validation-for="Animal.DateAquired" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Animal.LastFed" class="control-label"></label>
-                <input asp-for="Animal.LastFed" class="form-control" />
-                <span asp-validation-for="Animal.LastFed" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
 
-<div>
-    <a asp-page="./Index">Back to List</a>
-</div>
+        <div>
+            <a asp-page="./Index" class="btn btn-secondary my-2">Back to List</a>
+        </div>
+    </div>
+    <div class="w-100 w-md-50 d-flex justify-content-center align-items-center min-w-600">
+        <img src="@Model.Animal.PhotoURL" alt="@Model.Animal.Name the @Model.Animal.Species's Photo" class="w-100">
+    </div>
+
+</section>
+
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
