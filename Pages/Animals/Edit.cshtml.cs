@@ -54,7 +54,7 @@ namespace FullCRUDZoo.Pages.Animals
             if (await TryUpdateModelAsync<Animal>(
                 animalToUpdate,
                 "animal",
-                a => a.Name, a => a.Species, a => a.Diet, a => a.Photo, a => a.DateOfBirth, a => a.DateAquired, a => a.LastFed
+                a => a.Name, a => a.Species, a => a.Diet, a => a.PhotoURL, a => a.DateOfBirth, a => a.DateAquired, a => a.LastFed
             ))
             {
                 await _context.SaveChangesAsync();

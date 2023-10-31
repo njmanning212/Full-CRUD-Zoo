@@ -8,7 +8,8 @@ public class Animal
   public string Name { get; set; }
   public string Species { get; set; }
   public string Diet { get; set; }
-  public string Photo { get; set; }
+  [DisplayName("Photo URL")]
+  public string PhotoURL { get; set; }
   [DisplayName("Date Of Birth")]
   public DateTime DateOfBirth { get; set; }
   [DisplayName("Date Aquired")]

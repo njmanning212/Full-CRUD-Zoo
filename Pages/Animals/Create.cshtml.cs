@@ -36,7 +36,7 @@ namespace FullCRUDZoo.Pages.Animals
             if (await TryUpdateModelAsync(
                 emptyAnimal,
                 "animal",
-                a => a.Name, a => a.Species, a => a.Diet, async => async.Photo, a => a.DateOfBirth, a => a.DateAquired, a => a.LastFed
+                a => a.Name, a => a.Species, a => a.Diet, async => async.PhotoURL, a => a.DateOfBirth, a => a.DateAquired, a => a.LastFed
             ))
             {
                 _context.Animals.Add(emptyAnimal);
