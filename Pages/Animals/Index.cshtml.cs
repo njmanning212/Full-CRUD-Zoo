@@ -22,17 +22,26 @@ namespace FullCRUDZoo.Pages.Animals
         public string NameSort { get; set; }
         public string SpeciesSort { get; set; }
         public string LastFedSort { get; set; }
+        public string CurrentFilter { get; set; }
 
         public IList<Animal> Animals { get;set; } = default!;
 
-        public async Task OnGetAsync(string sortOrder)
+        public async Task OnGetAsync(string sortOrder, string searchString)
         {
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             SpeciesSort = sortOrder == "Species" ? "species_desc" : "Species";
             LastFedSort = sortOrder == "LastFed" ? "lastfed_desc" : "LastFed";
 
+            CurrentFilter = searchString;
+
             IQueryable<Animal> animalsIQ = from a in _context.Animals
                                            select a;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                animalsIQ = animalsIQ.Where(a => a.Name.Contains(searchString)
+                                            || a.Species.Contains(searchString));
+            }
             
             switch (sortOrder)
             {
