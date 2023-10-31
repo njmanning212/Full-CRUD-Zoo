@@ -68,5 +68,36 @@ namespace FullCRUDZoo.Pages.Animals
 
             Animals = await animalsIQ.AsNoTracking().ToListAsync();
         }
+
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Animal animal = await _context.Animals.FindAsync(id);
+
+            if (animal == null)
+            {
+                return NotFound();
+            }
+
+            DateTime now = DateTime.Now;
+            animal.LastFed = now;
+
+            if (await TryUpdateModelAsync<Animal>(
+                animal,
+                "animal",
+                a => a.LastFed
+            ))
+            {
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+
+            return Page();
+
+        }
     }
 }
