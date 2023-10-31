@@ -26,20 +26,25 @@ namespace FullCRUDZoo.Pages.Animals
 
         [BindProperty]
         public Animal Animal { get; set; } = default!;
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Animals == null || Animal == null)
+            var emptyAnimal = new Animal();
+
+            if (await TryUpdateModelAsync(
+                emptyAnimal,
+                "animal",
+                a => a.Name, a => a.Species, a => a.Diet, async => async.Photo, a => a.DateOfBirth, a => a.DateAquired, a => a.LastFed
+            ))
             {
-                return Page();
+                _context.Animals.Add(emptyAnimal);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-
-            _context.Animals.Add(Animal);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            
+            return Page();
         }
     }
 }
