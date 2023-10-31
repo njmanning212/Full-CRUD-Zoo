@@ -8,6 +8,7 @@
 /Users/pro/code/CSharp/FullCRUDZoo/bin/Debug/net7.0/FullCRUDZoo.pdb
 /Users/pro/code/CSharp/FullCRUDZoo/bin/Debug/net7.0/Azure.Core.dll
 /Users/pro/code/CSharp/FullCRUDZoo/bin/Debug/net7.0/Azure.Identity.dll
+/Users/pro/code/CSharp/FullCRUDZoo/bin/Debug/net7.0/dotenv.net.dll
 /Users/pro/code/CSharp/FullCRUDZoo/bin/Debug/net7.0/Humanizer.dll
 /Users/pro/code/CSharp/FullCRUDZoo/bin/Debug/net7.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 /Users/pro/code/CSharp/FullCRUDZoo/bin/Debug/net7.0/Microsoft.AspNetCore.Razor.Language.dll
@@ -280,4 +281,3 @@
 /Users/pro/code/CSharp/FullCRUDZoo/obj/Debug/net7.0/FullCRUDZoo.pdb
 /Users/pro/code/CSharp/FullCRUDZoo/obj/Debug/net7.0/FullCRUDZoo.genruntimeconfig.cache
 /Users/pro/code/CSharp/FullCRUDZoo/obj/Debug/net7.0/ref/FullCRUDZoo.dll
-/Users/pro/code/CSharp/FullCRUDZoo/bin/Debug/net7.0/dotenv.net.dll
