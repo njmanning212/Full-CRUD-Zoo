@@ -19,14 +19,45 @@ namespace FullCRUDZoo.Pages.Animals
             _context = context;
         }
 
-        public IList<Animal> Animal { get;set; } = default!;
+        public string NameSort { get; set; }
+        public string SpeciesSort { get; set; }
+        public string LastFedSort { get; set; }
 
-        public async Task OnGetAsync()
+        public IList<Animal> Animals { get;set; } = default!;
+
+        public async Task OnGetAsync(string sortOrder)
         {
-            if (_context.Animals != null)
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            SpeciesSort = sortOrder == "Species" ? "species_desc" : "Species";
+            LastFedSort = sortOrder == "LastFed" ? "lastfed_desc" : "LastFed";
+
+            IQueryable<Animal> animalsIQ = from a in _context.Animals
+                                           select a;
+            
+            switch (sortOrder)
             {
-                Animal = await _context.Animals.ToListAsync();
+                case "name_desc":
+                    animalsIQ = animalsIQ.OrderByDescending(a => a.Name);
+                    break;
+                case "Species":
+                    animalsIQ = animalsIQ.OrderBy(a => a.Species);
+                    break;
+                case "species_desc":
+                    animalsIQ = animalsIQ.OrderByDescending(a => a.Species);
+                    break;
+                case "LastFed":
+                    animalsIQ = animalsIQ.OrderBy(a => a.LastFed);
+                    break;
+                case "lastfed_desc":
+                    animalsIQ = animalsIQ.OrderByDescending(a => a.LastFed);
+                    break;
+                default:
+                    animalsIQ = animalsIQ.OrderBy(a => a.Name);
+                    break;
+
             }
+
+            Animals = await animalsIQ.AsNoTracking().ToListAsync();
         }
     }
 }

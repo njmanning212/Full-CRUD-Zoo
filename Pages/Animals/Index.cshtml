@@ -2,31 +2,37 @@
 @model FullCRUDZoo.Pages.Animals.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Zoo Animals";
 }
 
-<h1>Index</h1>
+<h1>Zoo Animals</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create" class="btn btn-primary">Add Animal</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Animal[0].Name)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Animals[0].Name)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Animal[0].Species)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.SpeciesSort">
+                    @Html.DisplayNameFor(model => model.Animals[0].Species)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Animal[0].LastFed)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.LastFedSort">
+                    @Html.DisplayNameFor(model => model.Animals[0].LastFed)
+                </a>
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Animal) {
+@foreach (var item in Model.Animals) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -38,7 +44,7 @@
                 @Html.DisplayFor(modelItem => item.LastFed)
             </td>
             <td>
-                <a asp-page="./Details" asp-route-id="@item.AnimalID">Details</a> 
+                <a asp-page="./Details" asp-route-id="@item.AnimalID" class="btn btn-secondary">Details</a> 
             </td>
         </tr>
 }
