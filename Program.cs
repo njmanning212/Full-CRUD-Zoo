@@ -1,12 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using FullCRUDZoo.Data;
+using dotenv.net;
 var builder = WebApplication.CreateBuilder(args);
+
+
+DotEnv.Load();
+var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ZooContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("ZooContextSQLite")));
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
     
@@ -23,14 +28,6 @@ else
 {
     app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
-}
-
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-
-    var context = services.GetRequiredService<ZooContext>();
-    context.Database.EnsureCreated();
 }
 
 app.UseHttpsRedirection();

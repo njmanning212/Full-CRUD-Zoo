@@ -280,3 +280,4 @@
 /Users/pro/code/CSharp/FullCRUDZoo/obj/Debug/net7.0/FullCRUDZoo.pdb
 /Users/pro/code/CSharp/FullCRUDZoo/obj/Debug/net7.0/FullCRUDZoo.genruntimeconfig.cache
 /Users/pro/code/CSharp/FullCRUDZoo/obj/Debug/net7.0/ref/FullCRUDZoo.dll
+/Users/pro/code/CSharp/FullCRUDZoo/bin/Debug/net7.0/dotenv.net.dll

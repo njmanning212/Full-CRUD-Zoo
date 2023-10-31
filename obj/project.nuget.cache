@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "9OTu+Uu4wehAGmf94T+3z73JFBKc4EugmLrtiYf0vTGCk1xFnRRsrdBJ2vXT/6EbnxQ64w91up70tuT69ly/Cg==",
+  "dgSpecHash": "cbttIJSFU5hH56s2SYBYg2lXejwek1srRONWQtdCQnKVNBR8hOf3VuUvcoFIzffui3zwsl50ouugTtjpfl1ETA==",
   "success": true,
   "projectFilePath": "/Users/pro/code/CSharp/FullCRUDZoo/FullCRUDZoo.csproj",
   "expectedPackageFiles": [
     "/Users/pro/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/Users/pro/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
+    "/Users/pro/.nuget/packages/dotenv.net/3.1.2/dotenv.net.3.1.2.nupkg.sha512",
     "/Users/pro/.nuget/packages/humanizer/2.14.1/humanizer.2.14.1.nupkg.sha512",
     "/Users/pro/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/pro/.nuget/packages/humanizer.core.af/2.14.1/humanizer.core.af.2.14.1.nupkg.sha512",
